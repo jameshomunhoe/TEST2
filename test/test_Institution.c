@@ -160,7 +160,7 @@ void test_Institution_select_should_show_1_similarities(){
 
  }
  
- void test_Institution_select_should_show_2_similarities(){
+void test_Institution_select_should_show_2_similarities(){
 
 	Institution institution[]={ {.type = Unknown},
 							  {.type = University},
@@ -197,3 +197,14 @@ void test_Institution_select_should_show_1_similarities(){
 						isUniversityCollege));
 
  }
+ 
+void test_wasEstablishedBefore_should_return_1_for_lesser_yearEstablished_0_for_more(){
+	
+	Institution institute[]={{.yearEstablished=1960},{.yearEstablished=2014}};
+	int yearToCompare = 1980;
+	
+	TEST_ASSERT_EQUAL(1,wasEstablishedBefore(&institute[0],&yearToCompare));
+	TEST_ASSERT_EQUAL(0,wasEstablishedBefore(&institute[1],&yearToCompare));
+}
+
+//void test_

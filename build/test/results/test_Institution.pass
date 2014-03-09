@@ -24,11 +24,14 @@
 - :test: test_Institution_select_should_show_2_similarities
   :line: 163
   :message: ''
+- :test: test_wasEstablishedBefore_should_return_1_for_lesser_yearEstablished_0_for_more
+  :line: 201
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 7
-  :passed: 7
+  :total: 8
+  :passed: 8
   :failed: 0
   :ignored: 0
 :stdout:

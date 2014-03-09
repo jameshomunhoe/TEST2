@@ -318,7 +318,7 @@ void test_Institution_select_should_show_1_similarities(){
 
 
 
- void test_Institution_select_should_show_2_similarities(){
+void test_Institution_select_should_show_2_similarities(){
 
 
 
@@ -391,3 +391,21 @@ void test_Institution_select_should_show_1_similarities(){
 
 
  }
+
+
+
+void test_wasEstablishedBefore_should_return_1_for_lesser_yearEstablished_0_for_more(){
+
+
+
+ Institution institute[]={{.yearEstablished=1960},{.yearEstablished=2014}};
+
+ int yearToCompare = 1980;
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((wasEstablishedBefore(&institute[0],&yearToCompare))), (((void *)0)), (_U_UINT)206, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((wasEstablishedBefore(&institute[1],&yearToCompare))), (((void *)0)), (_U_UINT)207, UNITY_DISPLAY_STYLE_INT);
+
+}

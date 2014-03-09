@@ -43,6 +43,7 @@ extern void test_isUniversityCollege_should_return_1_if_same_Institutiontype(voi
 extern void test_isUniversityCollege_should_return_0_if_different_Institutiontype(void);
 extern void test_Institution_select_should_show_1_similarities(void);
 extern void test_Institution_select_should_show_2_similarities(void);
+extern void test_wasEstablishedBefore_should_return_1_for_lesser_yearEstablished_0_for_more(void);
 
 
 //=======Mock Management=====
@@ -88,6 +89,7 @@ int main(void)
   RUN_TEST(test_isUniversityCollege_should_return_0_if_different_Institutiontype, 120);
   RUN_TEST(test_Institution_select_should_show_1_similarities, 128);
   RUN_TEST(test_Institution_select_should_show_2_similarities, 163);
+  RUN_TEST(test_wasEstablishedBefore_should_return_1_for_lesser_yearEstablished_0_for_more, 201);
 
   return (UnityEnd());
 }

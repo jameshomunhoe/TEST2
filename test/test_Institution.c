@@ -108,3 +108,44 @@ void test_Institution_reverse_should_work_with_6_Institute(){
 	TEST_ASSERT_EQUAL(6,Institution_reverse(&inputList, &outputList));
 	
 }
+
+void test_isUniversityCollege_should_return_1_if_same_Institutiontype(){
+
+	Institution institute={.type=UniversityCollege};
+	InstitutionType type = {UniversityCollege};
+	
+	TEST_ASSERT_EQUAL(1,isUniversityCollege(&institute,&type));
+}
+
+void test_isUniversityCollege_should_return_0_if_different_Institutiontype(){
+
+	Institution institute={.type=College};
+	InstitutionType type = {UniversityCollege};
+	
+	TEST_ASSERT_EQUAL(0,isUniversityCollege(&institute,&type));
+}
+
+// void test_only(){
+
+	// Institution institute[]={ {.type = Unknown},
+							  // {.type = University},
+							  // {.type = UniversityCollege},
+							  // {.type = College}};
+	
+	// InstitutionType selectedType = {
+	// LinkedList inputList;
+	// LinkedList outputList;
+
+	// printf("%d\n", institute[0].type);
+	// printf("%d\n", institute[1].type);
+	// printf("%d\n", institute[2].type);
+
+
+
+
+// int Institution_select( LinkedList *inputList,
+						// LinkedList *outputList,
+						// void *criterion,
+						// int (*compare)(void *, void *))
+
+// }

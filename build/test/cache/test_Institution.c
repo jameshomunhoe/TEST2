@@ -213,3 +213,35 @@ void test_Institution_reverse_should_work_with_6_Institute(){
 
 
 }
+
+
+
+void test_isUniversityCollege_should_return_1_if_same_Institutiontype(){
+
+
+
+ Institution institute={.type=UniversityCollege};
+
+ InstitutionType type = {UniversityCollege};
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((isUniversityCollege(&institute,&type))), (((void *)0)), (_U_UINT)117, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_isUniversityCollege_should_return_0_if_different_Institutiontype(){
+
+
+
+ Institution institute={.type=College};
+
+ InstitutionType type = {UniversityCollege};
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((isUniversityCollege(&institute,&type))), (((void *)0)), (_U_UINT)125, UNITY_DISPLAY_STYLE_INT);
+
+}

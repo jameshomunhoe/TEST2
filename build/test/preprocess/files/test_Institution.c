@@ -245,3 +245,149 @@ void test_isUniversityCollege_should_return_0_if_different_Institutiontype(){
  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((isUniversityCollege(&institute,&type))), (((void *)0)), (_U_UINT)125, UNITY_DISPLAY_STYLE_INT);
 
 }
+
+
+
+void test_Institution_select_should_show_1_similarities(){
+
+
+
+ Institution institution[]={ {.type = Unknown},
+
+         {.type = University},
+
+         {.type = UniversityCollege},
+
+         {.type = College}};
+
+
+
+ InstitutionType selectedType = {UniversityCollege};
+
+ LinkedList inputList;
+
+ LinkedList outputList;
+
+
+
+
+
+ List_removeHead_CMockExpectAndReturn(140, &inputList, &institution[0]);
+
+
+
+ List_removeHead_CMockExpectAndReturn(142, &inputList, &institution[1]);
+
+
+
+ List_removeHead_CMockExpectAndReturn(144, &inputList, &institution[2]);
+
+ Stack_push_CMockExpect(145, &stack, &institution[2]);
+
+
+
+ List_removeHead_CMockExpectAndReturn(147, &inputList, &institution[3]);
+
+
+
+
+
+ List_removeHead_CMockExpectAndReturn(150, &inputList, ((void *)0));
+
+
+
+ Stack_pop_CMockExpectAndReturn(152, &stack, &institution[2]);
+
+ List_addTail_CMockExpect(153, &outputList, &institution[2]);
+
+
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((Institution_select( &inputList, &outputList, &selectedType, isUniversityCollege))), (((void *)0)), (_U_UINT)159, UNITY_DISPLAY_STYLE_INT)
+
+
+
+
+
+                           ;
+
+
+
+ }
+
+
+
+ void test_Institution_select_should_show_2_similarities(){
+
+
+
+ Institution institution[]={ {.type = Unknown},
+
+         {.type = University},
+
+         {.type = UniversityCollege},
+
+         {.type = UniversityCollege}};
+
+
+
+ InstitutionType selectedType = {UniversityCollege};
+
+ LinkedList inputList;
+
+ LinkedList outputList;
+
+
+
+
+
+ List_removeHead_CMockExpectAndReturn(175, &inputList, &institution[0]);
+
+
+
+ List_removeHead_CMockExpectAndReturn(177, &inputList, &institution[1]);
+
+
+
+ List_removeHead_CMockExpectAndReturn(179, &inputList, &institution[2]);
+
+ Stack_push_CMockExpect(180, &stack, &institution[2]);
+
+
+
+ List_removeHead_CMockExpectAndReturn(182, &inputList, &institution[3]);
+
+ Stack_push_CMockExpect(183, &stack, &institution[3]);
+
+
+
+
+
+ List_removeHead_CMockExpectAndReturn(186, &inputList, ((void *)0));
+
+
+
+ Stack_pop_CMockExpectAndReturn(188, &stack, &institution[2]);
+
+ List_addTail_CMockExpect(189, &outputList, &institution[2]);
+
+ Stack_pop_CMockExpectAndReturn(190, &stack, &institution[3]);
+
+ List_addTail_CMockExpect(191, &outputList, &institution[3]);
+
+
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((Institution_select( &inputList, &outputList, &selectedType, isUniversityCollege))), (((void *)0)), (_U_UINT)197, UNITY_DISPLAY_STYLE_INT)
+
+
+
+
+
+                           ;
+
+
+
+ }

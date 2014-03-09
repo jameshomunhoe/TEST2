@@ -125,27 +125,75 @@ void test_isUniversityCollege_should_return_0_if_different_Institutiontype(){
 	TEST_ASSERT_EQUAL(0,isUniversityCollege(&institute,&type));
 }
 
-// void test_only(){
+void test_Institution_select_should_show_1_similarities(){
 
-	// Institution institute[]={ {.type = Unknown},
-							  // {.type = University},
-							  // {.type = UniversityCollege},
-							  // {.type = College}};
+	Institution institution[]={ {.type = Unknown},
+							  {.type = University},
+							  {.type = UniversityCollege},
+							  {.type = College}};
 	
-	// InstitutionType selectedType = {
-	// LinkedList inputList;
-	// LinkedList outputList;
+	InstitutionType selectedType = {UniversityCollege};
+	LinkedList inputList;
+	LinkedList outputList;
+	
+	//Mocking. Do not stackPush if different
+	List_removeHead_ExpectAndReturn(&inputList,&institution[0]);
+	
+	List_removeHead_ExpectAndReturn(&inputList,&institution[1]);
+	
+	List_removeHead_ExpectAndReturn(&inputList,&institution[2]);
+	Stack_push_Expect(&stack, &institution[2]);
+	
+	List_removeHead_ExpectAndReturn(&inputList,&institution[3]);
+	
+	//Put fake NULL to know when to stop
+	List_removeHead_ExpectAndReturn(&inputList,NULL);
+	
+	Stack_pop_ExpectAndReturn(&stack,&institution[2]);
+	List_addTail_Expect(&outputList, &institution[2]);
 
-	// printf("%d\n", institute[0].type);
-	// printf("%d\n", institute[1].type);
-	// printf("%d\n", institute[2].type);
+	//Call function
+	TEST_ASSERT_EQUAL(1,Institution_select( &inputList,
+						&outputList,
+						&selectedType,
+						isUniversityCollege));
 
+ }
+ 
+ void test_Institution_select_should_show_2_similarities(){
 
+	Institution institution[]={ {.type = Unknown},
+							  {.type = University},
+							  {.type = UniversityCollege},
+							  {.type = UniversityCollege}};
+	
+	InstitutionType selectedType = {UniversityCollege};
+	LinkedList inputList;
+	LinkedList outputList;
+	
+	//Mocking. Do not stackPush if different
+	List_removeHead_ExpectAndReturn(&inputList,&institution[0]);
+	
+	List_removeHead_ExpectAndReturn(&inputList,&institution[1]);
+	
+	List_removeHead_ExpectAndReturn(&inputList,&institution[2]);
+	Stack_push_Expect(&stack, &institution[2]);
+	
+	List_removeHead_ExpectAndReturn(&inputList,&institution[3]);
+	Stack_push_Expect(&stack, &institution[3]);
+	
+	//Put fake NULL to know when to stop
+	List_removeHead_ExpectAndReturn(&inputList,NULL);
+	
+	Stack_pop_ExpectAndReturn(&stack,&institution[2]);
+	List_addTail_Expect(&outputList, &institution[2]);
+	Stack_pop_ExpectAndReturn(&stack,&institution[3]);
+	List_addTail_Expect(&outputList, &institution[3]);
 
+	//Call function
+	TEST_ASSERT_EQUAL(2,Institution_select( &inputList,
+						&outputList,
+						&selectedType,
+						isUniversityCollege));
 
-// int Institution_select( LinkedList *inputList,
-						// LinkedList *outputList,
-						// void *criterion,
-						// int (*compare)(void *, void *))
-
-// }
+ }

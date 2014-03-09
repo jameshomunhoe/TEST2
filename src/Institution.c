@@ -31,15 +31,39 @@ int Institution_reverse(LinkedList *inputList, LinkedList *outputList){
 
 }
 
-// int Institution_select( LinkedList *inputList,
-						// LinkedList *outputList,
-						// void *criterion,
-						// int (*compare)(void *, void *)){
+int Institution_select( LinkedList *inputList,
+						LinkedList *outputList,
+						void *criterion,
+						int (*compare)(void *, void *)){
 						
-							
-
-						
-// }
+		void *institutionIn;
+		int	countSimilar=0;
+		int	i;
+		
+			institutionIn = List_removeHead(inputList);
+		
+		for(i=1;institutionIn!=NULL;i++){
+			
+			if(compare(institutionIn,criterion)){
+				Stack_push(&stack,institutionIn);
+				countSimilar++;
+				printf("Institute number %d is similar\n",i);
+			}
+			else
+				printf("Institute number %d is not similar\n",i);
+			
+			institutionIn = List_removeHead(inputList);
+		}
+		
+		for(i=0; i<countSimilar; i++){
+			institutionIn = Stack_pop(&stack);
+			List_addTail(outputList, institutionIn);
+		}
+			
+			//}while(&institutionIn != NULL);
+	
+	return countSimilar;		
+}
 						
 				
 int isUniversityCollege (void *elem1, void *type){

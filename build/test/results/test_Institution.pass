@@ -18,11 +18,25 @@
 - :test: test_isUniversityCollege_should_return_0_if_different_Institutiontype
   :line: 120
   :message: ''
+- :test: test_Institution_select_should_show_1_similarities
+  :line: 128
+  :message: ''
+- :test: test_Institution_select_should_show_2_similarities
+  :line: 163
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 5
-  :passed: 5
+  :total: 7
+  :passed: 7
   :failed: 0
   :ignored: 0
-:stdout: []
+:stdout:
+- Institute number 1 is not similar
+- Institute number 2 is not similar
+- Institute number 3 is similar
+- Institute number 4 is not similar
+- Institute number 1 is not similar
+- Institute number 2 is not similar
+- Institute number 3 is similar
+- Institute number 4 is similar

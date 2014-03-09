@@ -1,9 +1,16 @@
 #ifndef __INSTITUTION_H__
 #define __INSTITUTION_H__
 
+#include "LinkedList.h"
+#include "Stack.h"
+
 extern Stack stack;
 
+//enum for exceptions
+typedef enum {NO_ERROR, ERROR_YEAR} exception;
+
 typedef enum{Unknown, University, UniversityCollege, College} InstitutionType;
+
 
 typedef struct Institution_t{
 	char *name;

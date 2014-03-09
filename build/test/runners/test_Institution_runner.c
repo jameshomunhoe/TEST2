@@ -8,10 +8,13 @@
   Unity.NumberOfTests++; \
   if (TEST_PROTECT()) \
   { \
+    CEXCEPTION_T e; \
+    Try { \
       CMock_Init(); \
       setUp(); \
       TestFunc(); \
       CMock_Verify(); \
+    } Catch(e) { TEST_ASSERT_EQUAL_HEX32_MESSAGE(CEXCEPTION_NONE, e, "Unhandled Exception!"); } \
   } \
   CMock_Destroy(); \
   if (TEST_PROTECT() && !TEST_IS_IGNORED) \
@@ -26,6 +29,7 @@
 #include "cmock.h"
 #include <setjmp.h>
 #include <stdio.h>
+#include "CException.h"
 #include "mock_LinkedList.h"
 #include "mock_Stack.h"
 
@@ -44,6 +48,10 @@ extern void test_isUniversityCollege_should_return_0_if_different_Institutiontyp
 extern void test_Institution_select_should_show_1_similarities(void);
 extern void test_Institution_select_should_show_2_similarities(void);
 extern void test_wasEstablishedBefore_should_return_1_for_lesser_yearEstablished_0_for_more(void);
+extern void test_wasEstablishedBefore_should_throw_error_exception(void);
+extern void test_wasEstablishedBefore_should_not_throw_error_exception(void);
+extern void test_Institution_select_should_show_yearEstablished_less_than_1980(void);
+extern void test_Institution_select_should_show_yearEstablished_more_than_2014(void);
 
 
 //=======Mock Management=====
@@ -82,14 +90,18 @@ int main(void)
 {
   Unity.TestFile = "test_Institution.c";
   UnityBegin();
-  RUN_TEST(test_Institution_reverse_should_work_with_1_Institute, 9);
-  RUN_TEST(test_Institution_reverse_should_work_with_3_Institute, 34);
-  RUN_TEST(test_Institution_reverse_should_work_with_6_Institute, 67);
-  RUN_TEST(test_isUniversityCollege_should_return_1_if_same_Institutiontype, 112);
-  RUN_TEST(test_isUniversityCollege_should_return_0_if_different_Institutiontype, 120);
-  RUN_TEST(test_Institution_select_should_show_1_similarities, 128);
-  RUN_TEST(test_Institution_select_should_show_2_similarities, 163);
-  RUN_TEST(test_wasEstablishedBefore_should_return_1_for_lesser_yearEstablished_0_for_more, 201);
+  RUN_TEST(test_Institution_reverse_should_work_with_1_Institute, 11);
+  RUN_TEST(test_Institution_reverse_should_work_with_3_Institute, 36);
+  RUN_TEST(test_Institution_reverse_should_work_with_6_Institute, 69);
+  RUN_TEST(test_isUniversityCollege_should_return_1_if_same_Institutiontype, 114);
+  RUN_TEST(test_isUniversityCollege_should_return_0_if_different_Institutiontype, 122);
+  RUN_TEST(test_Institution_select_should_show_1_similarities, 130);
+  RUN_TEST(test_Institution_select_should_show_2_similarities, 165);
+  RUN_TEST(test_wasEstablishedBefore_should_return_1_for_lesser_yearEstablished_0_for_more, 203);
+  RUN_TEST(test_wasEstablishedBefore_should_throw_error_exception, 212);
+  RUN_TEST(test_wasEstablishedBefore_should_not_throw_error_exception, 226);
+  RUN_TEST(test_Institution_select_should_show_yearEstablished_less_than_1980, 239);
+  RUN_TEST(test_Institution_select_should_show_yearEstablished_more_than_2014, 277);
 
   return (UnityEnd());
 }

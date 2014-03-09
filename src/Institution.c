@@ -1,7 +1,11 @@
-#include "Stack.h"
-#include <stdio.h>
-#include "LinkedList.h"
 #include "Institution.h"
+#include "LinkedList.h"
+#include "Stack.h"
+#include "CException.h"
+#include <stdio.h>
+
+
+
 
 Stack stack;
 
@@ -36,22 +40,19 @@ int Institution_select( LinkedList *inputList,
 						void *criterion,
 						int (*compare)(void *, void *)){
 						
-		void *institutionIn;
-		int	countSimilar=0;
-		int	i;
+		void *institutionIn;	//For input of stack
+		int	countSimilar=0;		//For output of stack
+		int	i;					//For counter purpose
 		
 			institutionIn = List_removeHead(inputList);
 		
-		for(i=1;institutionIn!=NULL;i++){
+		for(i=1;institutionIn!=NULL;){
 			
 			if(compare(institutionIn,criterion)){
 				Stack_push(&stack,institutionIn);
 				countSimilar++;
-				printf("Institute number %d is similar\n",i);
 			}
-			else
-				printf("Institute number %d is not similar\n",i);
-			
+				
 			institutionIn = List_removeHead(inputList);
 		}
 		
@@ -60,7 +61,6 @@ int Institution_select( LinkedList *inputList,
 			List_addTail(outputList, institutionIn);
 		}
 			
-			//}while(&institutionIn != NULL);
 	
 	return countSimilar;		
 }
@@ -68,6 +68,7 @@ int Institution_select( LinkedList *inputList,
 				
 int isUniversityCollege (void *elem1, void *type){
 	
+	//compare
 	if(((Institution *)elem1)->type == *(InstitutionType*)type){
 	return 1;
 	}
@@ -79,11 +80,17 @@ int isUniversityCollege (void *elem1, void *type){
 
 int wasEstablishedBefore (void *elem1, void *year){
 	
+	//compare
 	if(((Institution *)elem1)->yearEstablished < *(int *)year){
 	return 1;
 	}
-	else{
+	
+	else if(((Institution *)elem1)->yearEstablished > 2014) {
+		Throw(ERROR_YEAR); //Only able to throw in this error, otherwise will affect other TEST_ASSERT
 	return 0;
 	}
-		
+	
+	else
+	return 0;
+	
 }

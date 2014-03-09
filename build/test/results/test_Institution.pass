@@ -4,42 +4,46 @@
   :file: test_Institution.c
 :successes:
 - :test: test_Institution_reverse_should_work_with_1_Institute
-  :line: 9
+  :line: 11
   :message: ''
 - :test: test_Institution_reverse_should_work_with_3_Institute
-  :line: 34
+  :line: 36
   :message: ''
 - :test: test_Institution_reverse_should_work_with_6_Institute
-  :line: 67
+  :line: 69
   :message: ''
 - :test: test_isUniversityCollege_should_return_1_if_same_Institutiontype
-  :line: 112
+  :line: 114
   :message: ''
 - :test: test_isUniversityCollege_should_return_0_if_different_Institutiontype
-  :line: 120
+  :line: 122
   :message: ''
 - :test: test_Institution_select_should_show_1_similarities
-  :line: 128
+  :line: 130
   :message: ''
 - :test: test_Institution_select_should_show_2_similarities
-  :line: 163
+  :line: 165
   :message: ''
 - :test: test_wasEstablishedBefore_should_return_1_for_lesser_yearEstablished_0_for_more
-  :line: 201
+  :line: 203
+  :message: ''
+- :test: test_wasEstablishedBefore_should_throw_error_exception
+  :line: 212
+  :message: ''
+- :test: test_wasEstablishedBefore_should_not_throw_error_exception
+  :line: 226
+  :message: ''
+- :test: test_Institution_select_should_show_yearEstablished_less_than_1980
+  :line: 239
+  :message: ''
+- :test: test_Institution_select_should_show_yearEstablished_more_than_2014
+  :line: 277
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 8
-  :passed: 8
+  :total: 12
+  :passed: 12
   :failed: 0
   :ignored: 0
-:stdout:
-- Institute number 1 is not similar
-- Institute number 2 is not similar
-- Institute number 3 is similar
-- Institute number 4 is not similar
-- Institute number 1 is not similar
-- Institute number 2 is not similar
-- Institute number 3 is similar
-- Institute number 4 is similar
+:stdout: []
